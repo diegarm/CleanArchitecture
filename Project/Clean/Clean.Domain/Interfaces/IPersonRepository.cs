@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Clean.Domain.Interfaces
 {
-    public interface IPersonRepository
+    public interface IPersonRepository : IGeneralRepository
     {
         Task<IEnumerable<Person>> GetAllPersonByNameAsync(string name);
 

@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace Clean.Domain.Interfaces
+namespace Clean.Application.Interfaces
 {
-    public interface IGeneralRepository
+    public interface IGeneralService
     {
         void Add<T>(T entity) where T : class;
 
@@ -11,6 +11,5 @@ namespace Clean.Domain.Interfaces
         void Delete<T>(T entity) where T : class;
 
         Task<bool> SaveChangesAsync();
-
     }
 }

@@ -1,9 +1,9 @@
-﻿using Clean.Domain.Entities.Enum;
+﻿using Clean.Application.ViewModels.Enum;
 using System;
 
-namespace Clean.Domain.Entities
+namespace Clean.Application.ViewModels
 {
-    public class Person
+    public class PersonViewModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }

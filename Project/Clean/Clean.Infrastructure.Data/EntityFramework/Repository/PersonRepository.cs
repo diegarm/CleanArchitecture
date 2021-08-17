@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace Clean.Infrastructure.Data.EntityFramework.Repository
 {
-    public class PersonRepository : IPersonRepository
+    public class PersonRepository : GeneralRepository, IPersonRepository
     {
-
-        private readonly CleanContext context;
 
         public PersonRepository(CleanContext _context)
         {
-            context = _context;
+            base.context = _context;
         }
 
         public async Task<IEnumerable<Person>> GetAllPersonAsync()
