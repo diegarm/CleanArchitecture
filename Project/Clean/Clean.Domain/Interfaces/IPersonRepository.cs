@@ -1,12 +1,13 @@
 ﻿using Clean.Domain.Entities;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Clean.Domain.Interfaces
 {
     public interface IPersonRepository
     {
-        Task<Person[]> GetAllPersonByNameAsync(string name);
+        Task<IEnumerable<Person>> GetAllPersonByNameAsync(string name);
 
-        Task<Person[]> GetAllPersonAsync();
+        Task<IEnumerable<Person>> GetAllPersonAsync();
     }
 }

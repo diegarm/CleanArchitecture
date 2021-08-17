@@ -1,13 +1,14 @@
 ﻿using Clean.Domain.Entities;
 using Clean.Infrastructure.Data.EntityFramework.Context;
-using Clean.Infrastructure.Data.Interfaces;
+using Clean.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Clean.Infrastructure.Data.EntityFramework.Repository
 {
-    public class PersonRepository : IPersonData
+    public class PersonRepository : IPersonRepository
     {
 
         private readonly CleanContext context;
@@ -17,7 +18,7 @@ namespace Clean.Infrastructure.Data.EntityFramework.Repository
             context = _context;
         }
 
-        public async Task<Person[]> GetAllPersonAsync()
+        public async Task<IEnumerable<Person>> GetAllPersonAsync()
         {
             IQueryable<Person> query = context.Person
                                    .AsNoTracking(); //Disabling change tracking is useful for read-only scenarios
@@ -29,7 +30,7 @@ namespace Clean.Infrastructure.Data.EntityFramework.Repository
 
         }
 
-        public async Task<Person[]> GetAllPersonByNameAsync(string name)
+        public async Task<IEnumerable<Person>> GetAllPersonByNameAsync(string name)
         {
             IQueryable<Person> query = context.Person
                                    .AsNoTracking(); //Disabling change tracking is useful for read-only scenarios
