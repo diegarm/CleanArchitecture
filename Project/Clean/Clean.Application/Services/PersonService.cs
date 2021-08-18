@@ -49,12 +49,17 @@ namespace Clean.Application.Services
             var result = await _personRepository.GetAllPersonAsync();
             return _mapper.Map<IEnumerable<PersonViewModel>>(result);
         }
+        public async Task<PersonViewModel> GetPersonByIdAsync(int id)
+        {
+            var result = await _personRepository.GetPersonById(id);
+            return _mapper.Map<PersonViewModel>(result);
+        }
+
 
         public async Task<IEnumerable<PersonViewModel>> GetAllPersonByNameAsync(string name)
         {
             var result = await _personRepository.GetAllPersonByNameAsync(name);
             return _mapper.Map<IEnumerable<PersonViewModel>>(result);
         }
-
     }
 }

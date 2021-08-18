@@ -7,7 +7,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
+using System.Security.Policy;
 using System.Threading.Tasks;
 
 namespace Clean.API
@@ -16,9 +19,7 @@ namespace Clean.API
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
-
-            host.Run();
+          CreateHostBuilder(args).Build().Run();           
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -27,5 +28,6 @@ namespace Clean.API
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }

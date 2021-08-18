@@ -1,4 +1,5 @@
 ﻿using Clean.Application.Interfaces;
+using Clean.Application.Mappings;
 using Clean.Application.Services;
 using Clean.Domain.Interfaces;
 using Clean.Infrastructure.Data.EntityFramework.Context;
@@ -19,6 +20,16 @@ namespace Clean.Infrastructure.IoC
 
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IPersonService, PersonService>();
+
+            return services;
+        }
+
+        public static IServiceCollection AddAutoMapperConfiguration(this IServiceCollection services)
+        {
+            services.AddAutoMapper(
+                typeof(DomainToViewModelMappingProfile),
+                typeof(ViewModelToDomainMappingProfile)
+                );
 
             return services;
         }

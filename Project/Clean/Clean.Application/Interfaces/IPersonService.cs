@@ -9,6 +9,8 @@ namespace Clean.Application.Interfaces
 {
     public interface IPersonService : IGeneralService
     {
+        Task<PersonViewModel> GetPersonByIdAsync(int id);
+
         Task<IEnumerable<PersonViewModel>> GetAllPersonByNameAsync(string name);
 
         Task<IEnumerable<PersonViewModel>> GetAllPersonAsync();

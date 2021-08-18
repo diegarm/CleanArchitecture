@@ -56,7 +56,7 @@ namespace Clean.Infrastructure.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("728a345e-a34f-40e5-8250-08c3563f5c57"),
+                            Id = new Guid("22b6a394-b292-436a-9157-6f651e6cb799"),
                             BirthDay = new DateTime(1986, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Diego Armando",
                             FiscalNumber = "34801267823",
@@ -66,7 +66,7 @@ namespace Clean.Infrastructure.Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("706e53ee-8799-4aa7-95ed-d5af7f9b790c"),
+                            Id = new Guid("40ccc2d2-9d4a-4182-9553-eaf04d62af6f"),
                             BirthDay = new DateTime(1986, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Diego Armando",
                             FiscalNumber = "34801267823",

@@ -9,5 +9,6 @@ namespace Clean.Domain.Interfaces
         Task<IEnumerable<Person>> GetAllPersonByNameAsync(string name);
 
         Task<IEnumerable<Person>> GetAllPersonAsync();
+        Task<Person> GetPersonById(int id);
     }
 }

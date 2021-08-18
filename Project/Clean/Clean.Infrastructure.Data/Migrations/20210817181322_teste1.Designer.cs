@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Clean.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(CleanContext))]
-    [Migration("20210817122036_teste2")]
-    partial class teste2
+    [Migration("20210817181322_teste1")]
+    partial class teste1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -58,21 +58,21 @@ namespace Clean.Infrastructure.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a5ffb103-2841-49ff-aa29-2209a38828bf"),
+                            Id = new Guid("22b6a394-b292-436a-9157-6f651e6cb799"),
                             BirthDay = new DateTime(1986, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Diego Armando",
                             FiscalNumber = "34801267823",
-                            Gender = 0,
+                            Gender = 1,
                             LastName = "de Arruda Bento",
                             Name = "Diego Armando"
                         },
                         new
                         {
-                            Id = new Guid("337fc243-911c-4b78-96ab-b06ce0abd801"),
+                            Id = new Guid("40ccc2d2-9d4a-4182-9553-eaf04d62af6f"),
                             BirthDay = new DateTime(1986, 7, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Diego Armando",
                             FiscalNumber = "34801267823",
-                            Gender = 0,
+                            Gender = 1,
                             LastName = "de Arruda Bento",
                             Name = "Diego Armando"
                         });
