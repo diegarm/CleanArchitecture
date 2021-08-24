@@ -1,5 +1,13 @@
 ##  Project Architecture
 
+
+### Clean.API
+API application
+
+<b>Dependency</b>
+- Clean.Infrastructure.Data
+- Clean.Infrastructure.IoC
+
 ### Clean.Application
 
 - Interfaces
@@ -29,12 +37,7 @@ Responsible for centralizing dependency injections
 - Clean.Application
 - Clean.Infrastructure.Data
 
-### Clean.API
-API application
 
-<b>Dependency</b>
-- Clean.Infrastructure.Data
-- Clean.Infrastructure.IoC
 
 
 #####Diego Armando - 2021
