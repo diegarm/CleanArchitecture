@@ -5,7 +5,7 @@ namespace Clean.Application.ViewModels
 {
     public class PersonViewModel
     {
-        public Guid Id { get; set; }
+        public long Id { get; set; }
         public string Name { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

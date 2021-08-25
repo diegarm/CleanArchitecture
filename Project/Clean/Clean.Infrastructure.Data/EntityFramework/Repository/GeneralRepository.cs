@@ -12,19 +12,23 @@ namespace Clean.Infrastructure.Data.EntityFramework.Repository
     {
         public CleanContext context;
 
-        public void Add<T>(T entity) where T : class
+        public async Task<bool> AddAsync<T>(T entity) where T : class
         {
             context.Add(entity);
+            return await SaveChangesAsync();
         }
 
-        public void Update<T>(T entity) where T : class
+        public async Task<bool> UpdateAsync<T>(T entity) where T : class
         {
             context.Update(entity);
+            return await SaveChangesAsync();
+
         }
 
-        public void Delete<T>(T entity) where T : class
+        public async Task<bool> DeleteAsync<T>(T entity) where T : class
         {
             context.Remove(entity);
+            return await SaveChangesAsync();
         }
 
         public async Task<bool> SaveChangesAsync()

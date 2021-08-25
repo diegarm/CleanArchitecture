@@ -23,8 +23,7 @@ namespace Clean.API
 
             services.AddInfrastructure(Configuration);
             services.AddAutoMapperConfiguration();
-            services.AddControllers();
-
+            services.AddControllersWithOdata();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Clean.Api", Version = "v1" });

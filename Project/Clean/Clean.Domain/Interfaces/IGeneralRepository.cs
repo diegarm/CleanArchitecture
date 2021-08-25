@@ -4,11 +4,11 @@ namespace Clean.Domain.Interfaces
 {
     public interface IGeneralRepository
     {
-        void Add<T>(T entity) where T : class;
+        Task<bool> AddAsync<T>(T entity) where T : class;
 
-        void Update<T>(T entity) where T : class;
+        Task<bool> UpdateAsync<T>(T entity) where T : class;
 
-        void Delete<T>(T entity) where T : class;
+        Task<bool> DeleteAsync<T>(T entity) where T : class;
 
         Task<bool> SaveChangesAsync();
 

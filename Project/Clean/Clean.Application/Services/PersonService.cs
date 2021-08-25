@@ -23,26 +23,22 @@ namespace Clean.Application.Services
 
         }
 
-        public void Add<PersonViewModel>(PersonViewModel person) where PersonViewModel : class
+        public Task<bool> Add<PersonViewModel>(PersonViewModel person) where PersonViewModel : class
         {
             var mapPerson = _mapper.Map<Person>(person);
-            _personRepository.Add(person);
+            return _personRepository.AddAsync(mapPerson);
         }
 
-        public void Update<PersonViewModel>(PersonViewModel person) where PersonViewModel : class
+        public Task<bool> Update<PersonViewModel>(PersonViewModel person) where PersonViewModel : class
         {
             var mapPerson = _mapper.Map<Person>(person);
-            _personRepository.Update(person);
+            return _personRepository.UpdateAsync(mapPerson);
         }
 
-        public void Delete<PersonViewModel>(PersonViewModel person) where PersonViewModel : class
+        public Task<bool> Delete<PersonViewModel>(PersonViewModel person) where PersonViewModel : class
         {
             var mapPerson = _mapper.Map<Person>(person);
-            _personRepository.Delete(person);
-        }
-        public Task<bool> SaveChangesAsync()
-        {
-            return _personRepository.SaveChangesAsync();
+            return _personRepository.DeleteAsync(mapPerson);
         }
         public async Task<IEnumerable<PersonViewModel>> GetAllPersonAsync()
         {

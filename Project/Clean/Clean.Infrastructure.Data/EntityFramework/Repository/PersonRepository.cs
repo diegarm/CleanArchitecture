@@ -22,7 +22,7 @@ namespace Clean.Infrastructure.Data.EntityFramework.Repository
                                    .AsNoTracking(); //Disabling change tracking is useful for read-only scenarios
 
             query = query
-                        .OrderBy(e => e.Name);
+                        .OrderBy(e => e.FirstName);
 
             return await query.ToArrayAsync();
 
@@ -34,8 +34,8 @@ namespace Clean.Infrastructure.Data.EntityFramework.Repository
                                    .AsNoTracking(); //Disabling change tracking is useful for read-only scenarios
 
             query = query
-                        .Where(e => e.Name.Contains(name))
-                        .OrderBy(e => e.Name);
+                        .Where(e => e.FirstName.Contains(name))
+                        .OrderBy(e => e.FirstName);
 
             return await query.ToArrayAsync();
         }
@@ -50,5 +50,7 @@ namespace Clean.Infrastructure.Data.EntityFramework.Repository
 
             return await query.FirstOrDefaultAsync();
         }
+
+
     }
 }

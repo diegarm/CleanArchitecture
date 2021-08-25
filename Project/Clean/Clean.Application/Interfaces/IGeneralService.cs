@@ -4,12 +4,11 @@ namespace Clean.Application.Interfaces
 {
     public interface IGeneralService
     {
-        void Add<T>(T entity) where T : class;
+        Task<bool> Add<T>(T entity) where T : class;
 
-        void Update<T>(T entity) where T : class;
+        Task<bool> Update<T>(T entity) where T : class;
 
-        void Delete<T>(T entity) where T : class;
+        Task<bool> Delete<T>(T entity) where T : class;
 
-        Task<bool> SaveChangesAsync();
     }
 }
