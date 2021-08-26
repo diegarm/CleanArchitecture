@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.OData.Batch;
 using Microsoft.OData;
 using Clean.Infrastructure.Data.OData;
 using Microsoft.AspNetCore.Builder;
+using Newtonsoft.Json;
 
 namespace Clean.Infrastructure.IoC
 {
@@ -49,10 +50,12 @@ namespace Clean.Infrastructure.IoC
         {
             services.AddControllers()
                 //.AddNewtonsoftJson(
-                //  options => {
+                //  options =>
+                //  {
                 //      options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 //  })
                 .AddOData(opt => opt.Expand().Select().Count().OrderBy().Filter().SetMaxTop(null).AddRouteComponents("api", EdmModelConfiguration.GetEdmModel()));
+                
             
             return services;
         }
