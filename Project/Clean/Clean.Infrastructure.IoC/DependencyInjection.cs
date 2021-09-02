@@ -10,19 +10,32 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.OData;
 using Clean.Infrastructure.Data.OData;
 using Microsoft.AspNetCore.OData.NewtonsoftJson;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 namespace Clean.Infrastructure.IoC
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services,
-                                                            IConfiguration configuration)
+        public static IServiceCollection AddInfrastructure(
+                    this IServiceCollection services,
+                    IConfiguration configuration,
+                    IWebHostEnvironment currentEnvironment)
         {
-            services.AddDbContext<CleanContext>(
-             context => {
-                 context.UseSqlServer(configuration.GetConnectionString("Default"));
-                 context.EnableSensitiveDataLogging(); //Enable Log in Entity Framework
-                });
+            if (currentEnvironment.IsEnvironment("IntegrationTest"))
+            {
+                services.AddDbContext<CleanContext>(options =>
+                    options.UseInMemoryDatabase("TestDB"));
+            }
+            else { 
+                services.AddDbContext<CleanContext>(
+               context => {
+                   context.UseSqlServer(configuration.GetConnectionString("Default"));
+                   context.EnableSensitiveDataLogging(); //Enable Log in Entity Framework
+                 });
+            }
+
+              
 
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IPersonService, PersonService>();

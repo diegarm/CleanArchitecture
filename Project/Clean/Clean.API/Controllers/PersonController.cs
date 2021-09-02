@@ -34,7 +34,11 @@ namespace Clean.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var result = await _personService.GetPersonByIdAsync(id).ConfigureAwait(false);
-            return Ok(result);
+
+            if (result is null)
+                return NotFound();
+            else
+                return Ok(result);
         }
 
         [HttpPost("/api/person/")]

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Clean.Tests.Integration": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
