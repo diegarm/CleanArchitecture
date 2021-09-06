@@ -7,6 +7,9 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Xunit;
+using System.Text.Json;
+using System.Net.Http;
+using System.Text;
 
 namespace Clean.Tests.Integration.Scenarios
 {
@@ -71,6 +74,44 @@ namespace Clean.Tests.Integration.Scenarios
 
             //Then
             response.StatusCode.Should().Be(HttpStatusCode.NotFound);
+        }
+
+
+        [Fact]
+        public async Task GiveNewPerson_WhenPostPerson_ThenReturnOKResponseAndGetPerson()
+        {
+            //Given
+            
+                //Count Persons
+                var responseGet = await _testContext.Client.GetAsync("/api/person/$count").ConfigureAwait(false);
+                responseGet.EnsureSuccessStatusCode();
+                var resultGetCount = await responseGet.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+                //New Person
+                var newPerson = new Person
+                {
+                    FirstName = "Edson",
+                    LastName = "Arantes",
+                    FiscalNumber = "12345677",
+                    BirthDay = new DateTime(1988, 07, 14),
+                    Gender = Domain.Entities.Enum.Gender.MaleEnum
+                };
+            
+                string newPersonJson = JsonSerializer.Serialize(newPerson);     
+                var requestContent = new StringContent(newPersonJson, Encoding.UTF8, "application/json");
+
+            //When
+                var responseNewPerson = await _testContext.Client.PostAsync("/api/person/", requestContent).ConfigureAwait(false);
+
+                //Count Persons
+                var responseGetNew = await _testContext.Client.GetAsync("/api/person/$count").ConfigureAwait(false);
+                responseGetNew.EnsureSuccessStatusCode();
+                var resultGetCountNew = await responseGetNew.Content.ReadAsStringAsync().ConfigureAwait(false);
+
+
+            //Then
+                responseNewPerson.StatusCode.Should().Be(HttpStatusCode.OK);
+                Assert.True(long.Parse(resultGetCountNew) > long.Parse(resultGetCount));
         }
 
     }
